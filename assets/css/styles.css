@@ -99,6 +99,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; margin: 0;
 .topbar a:hover { color: #fff; }
 
 /* ====================== Header ====================== */
+/* #header é só um placeholder de injeção — não pode formar caixa,
+   senão o sticky não tem "trilho" pra percorrer */
+#header { display: contents; }
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,.9); backdrop-filter: blur(12px);
