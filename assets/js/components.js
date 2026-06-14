@@ -29,6 +29,9 @@ const ICONS = {
   upload:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>',
   bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
   users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  trash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>',
+  truck:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+  lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
   building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="6"/><line x1="15" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="9" y2="10"/><line x1="15" y1="10" x2="15" y2="10"/><path d="M9 22v-4h6v4"/></svg>',
   tag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',
   google:'<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>',
@@ -137,11 +140,11 @@ function renderFooter() {
         <div>
           <h4>Institucional</h4>
           <ul>
-            <li><a href="busca.html">Busca avançada</a></li>
+            <li><a href="sobre.html">Sobre nós</a></li>
+            <li><a href="contato.html">Contato</a></li>
             <li><a href="revendas.html">Revendas e corretores</a></li>
             <li><a href="anunciar.html">Anunciar</a></li>
-            <li><a href="login.html">Entrar</a></li>
-            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="login.html">Entrar / Criar conta</a></li>
           </ul>
         </div>
         <div>
@@ -162,7 +165,8 @@ function renderFooter() {
   <!-- Carrinho -->
   <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-label="Carrinho">
-    <div class="cart-head"><h3>Seu carrinho</h3><button class="cart-close" onclick="closeCart()" aria-label="Fechar">×</button></div>
+    <div class="cart-head"><h3 id="cartTitle">Seu carrinho</h3><button class="cart-close" onclick="closeCart()" aria-label="Fechar">×</button></div>
+    <div class="ship-bar" id="shipBar"></div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-foot" id="cartFoot"></div>
   </aside>
@@ -256,7 +260,8 @@ function toggleFav(btn) { btn.classList.toggle('on'); }
 const CART_KEY = 'cf_cart';
 function getCart() { try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; } catch(e){ return {}; } }
 function saveCart(c) { localStorage.setItem(CART_KEY, JSON.stringify(c)); updateCartCount(); }
-function addToCart(id) { const c = getCart(); c[id] = (c[id]||0)+1; saveCart(c); renderCart(); openCart(); showToast('Adicionado ao carrinho ✅'); }
+function cartQty(id, delta) { const c = getCart(); c[id] = (c[id]||0)+delta; if (c[id]<=0) delete c[id]; saveCart(c); renderCart(); }
+function addToCart(id) { const c = getCart(); c[id] = (c[id]||0)+1; saveCart(c); renderCart(); openCart(); showToast('Adicionado ao carrinho'); }
 function removeFromCart(id) { const c = getCart(); delete c[id]; saveCart(c); renderCart(); }
 function updateCartCount() {
   const el = document.getElementById('cartCount'); if (!el) return;
@@ -265,29 +270,42 @@ function updateCartCount() {
 }
 function renderCart() {
   const wrap = document.getElementById('cartItems'); const foot = document.getElementById('cartFoot');
+  const ship = document.getElementById('shipBar'); const title = document.getElementById('cartTitle');
   if (!wrap) return;
-  const c = getCart(); const ids = Object.keys(c);
+  const c = getCart(); const ids = Object.keys(c).filter(id => PRODUTOS.find(x=>x.id===id));
+  const count = ids.reduce((a,id)=>a+c[id],0);
+  if (title) title.textContent = count ? `Seu carrinho (${count})` : 'Seu carrinho';
   if (!ids.length) {
-    wrap.innerHTML = `<div class="cart-empty">${ICONS.cart}<p>Seu carrinho está vazio.</p></div>`;
-    foot.innerHTML = `<a href="loja.html" class="btn btn-dark btn-block">Ir para a loja</a>`;
+    if (ship) ship.style.display = 'none';
+    wrap.innerHTML = `<div class="cart-empty">${ICONS.cart}<h4 style="font-family:var(--font);margin-bottom:4px">Seu carrinho está vazio</h4><p style="font-size:14px">Adicione produtos da loja para continuar.</p></div>`;
+    foot.innerHTML = `<a href="loja.html" class="btn btn-dark btn-block" onclick="closeCart()">Ver produtos</a>`;
     return;
   }
   let total = 0;
   wrap.innerHTML = ids.map(id => {
-    const p = PRODUTOS.find(x=>x.id===id); if (!p) return '';
-    total += p.price * c[id];
+    const p = PRODUTOS.find(x=>x.id===id); const sub = p.price*c[id]; total += sub;
     return `<div class="cart-item">
       <img src="${p.img}" alt="${p.title}" onerror="this.onerror=null;this.src='${p.fb}'">
       <div class="ci-body">
         <h4>${p.title}</h4>
-        <div class="ci-price">${c[id]}× ${formatBRL(p.price)}</div>
-        <button class="ci-rm" onclick="removeFromCart('${id}')">Remover</button>
+        <div class="ci-unit">${formatBRL(p.price)} · ${p.seller}</div>
+        <div class="ci-row">
+          <div class="qty"><button onclick="cartQty('${id}',-1)" aria-label="Menos">−</button><span>${c[id]}</span><button onclick="cartQty('${id}',1)" aria-label="Mais">+</button></div>
+          <span class="ci-sub">${formatBRL(sub)}</span>
+        </div>
       </div>
+      <button class="ci-rm" onclick="removeFromCart('${id}')" aria-label="Remover">${ICONS.trash}</button>
     </div>`;
   }).join('');
+  if (ship) { ship.style.display = 'flex'; ship.innerHTML = `${ICONS.truck} <span>Frete <b>grátis</b> em Cuiabá e Várzea Grande</span>`; }
   const msg = 'Olá! Quero finalizar a compra destes itens:\n' + ids.map(id => { const p = PRODUTOS.find(x=>x.id===id); return `• ${c[id]}x ${p.title} (${formatBRL(p.price)})`; }).join('\n') + `\n\nTotal: ${formatBRL(total)}`;
-  foot.innerHTML = `<div class="cart-total"><span>Total</span><b>${formatBRL(total)}</b></div>
-    <a href="${waLink(msg)}" target="_blank" rel="noopener" class="btn btn-wa btn-block">${ICONS.wa} Finalizar no WhatsApp</a>`;
+  foot.innerHTML = `
+    <div class="cart-sub-line"><span>Subtotal (${count} ${count===1?'item':'itens'})</span><span>${formatBRL(total)}</span></div>
+    <div class="cart-sub-line"><span>Entrega</span><span style="color:var(--success);font-weight:600">a combinar</span></div>
+    <div class="cart-total"><span>Total</span><b>${formatBRL(total)}</b></div>
+    <a href="${waLink(msg)}" target="_blank" rel="noopener" class="btn btn-wa btn-block">${ICONS.wa} Finalizar no WhatsApp</a>
+    <button class="btn btn-ghost btn-block" style="margin-top:8px" onclick="closeCart()">Continuar comprando</button>
+    <div class="secure">${ICONS.lock} Negociação segura e direta com o vendedor</div>`;
 }
 function openCart() { document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); document.body.style.overflow='hidden'; renderCart(); }
 function closeCart() { document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); document.body.style.overflow=''; }

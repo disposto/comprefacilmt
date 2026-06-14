@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre nós — Compre Fácil MT</title>
+  <meta name="description" content="Conheça a Compre Fácil MT, o marketplace que conecta compradores e vendedores em todo o Mato Grosso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="sobre">
+  <div id="header"></div>
+
+  <div class="page-head">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Início</a> / Sobre</div>
+      <h1>Mais que um classificado, um jeito de fazer negócio em MT</h1>
+      <p>Conectamos quem quer comprar e quem quer vender em todo o Mato Grosso — com confiança, agilidade e contato direto.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="why">
+        <div class="why-media reveal"><img src="assets/img/i2.jpg" alt="Mato Grosso"></div>
+        <div class="reveal">
+          <span class="eyebrow" style="color:var(--accent-600);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase">Nossa história</span>
+          <h2 style="font-size:32px;margin:8px 0 16px">Nascemos em Cuiabá, pensando no mato-grossense</h2>
+          <p class="muted">A Compre Fácil MT começou pequena, anunciando carros de revendas locais. Hoje reúne veículos, imóveis e uma loja virtual completa, com centenas de lojistas e corretores parceiros em cidades como Cuiabá, Várzea Grande, Rondonópolis, Sinop e Sorriso.</p>
+          <p class="muted">Nosso objetivo é simples: tirar a burocracia do caminho e deixar você negociar direto, do seu jeito, com segurança.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="container">
+      <div class="ti"><span class="tic" id="s1"></span><div><b>+10 mil</b><span>anúncios publicados</span></div></div>
+      <div class="ti"><span class="tic" id="s2"></span><div><b>+500</b><span>revendas e corretores</span></div></div>
+      <div class="ti"><span class="tic" id="s3"></span><div><b>78</b><span>cidades de MT</span></div></div>
+      <div class="ti"><span class="tic" id="s4"></span><div><b>12 anos</b><span>conectando o estado</span></div></div>
+    </div>
+  </div>
+
+  <section style="background:#fff">
+    <div class="container">
+      <div class="section-head" style="justify-content:center;text-align:center"><div><span class="eyebrow">Nossos valores</span><h2>O que nos move</h2></div></div>
+      <div class="steps">
+        <div class="step reveal"><div class="num" id="val1"></div><h3>Confiança</h3><p>Anunciantes verificados e contato direto, sem intermediários escondidos.</p></div>
+        <div class="step reveal"><div class="num" id="val2"></div><h3>Agilidade</h3><p>Anuncie em minutos e fale com o comprador na hora, pelo WhatsApp.</p></div>
+        <div class="step reveal"><div class="num" id="val3"></div><h3>Proximidade</h3><p>Feito em Mato Grosso, para o jeito mato-grossense de negociar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-band reveal">
+        <div><h2>Faça parte da Compre Fácil MT</h2><p>Anuncie grátis ou fale com a nossa equipe agora mesmo.</p></div>
+        <div class="actions">
+          <a href="anunciar.html" class="btn btn-primary">Anunciar grátis</a>
+          <a href="contato.html" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.4)">Falar com a equipe</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      [['s1','tag'],['s2','building'],['s3','pin'],['s4','shield']].forEach(([id,ic])=>{const e=document.getElementById(id);if(e)e.innerHTML=ICONS[ic];});
+      ['val1','val2','val3'].forEach((id,i)=>{document.getElementById(id).textContent=i+1;});
+    });
+  </script>
+</body>
+</html>
