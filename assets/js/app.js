@@ -13,7 +13,7 @@ function initHero() {
     <button class="hero-nav prev" aria-label="Anterior">${ICONS.arrow}</button>
     <button class="hero-nav next" aria-label="Próximo">${ICONS.arrow}</button>
     <div class="hero-dots">${HERO_SLIDES.map((_,i)=>`<button class="hero-dot ${i===0?'active':''}" data-i="${i}" aria-label="Slide ${i+1}"></button>`).join('')}</div>
-    <div class="hero-scroll"><span>Explore</span><span class="mouse"></span></div>
+    <button class="hero-scroll" type="button" aria-label="Arraste para baixo"><span>Arraste para baixo</span><span class="mouse"></span></button>
   `;
   root.querySelector('.hero-nav.prev svg').style.transform = 'rotate(180deg)';
 
@@ -34,6 +34,8 @@ function initHero() {
   root.querySelector('.hero-nav.next').onclick = ()=>{ next(); start(); };
   root.querySelector('.hero-nav.prev').onclick = ()=>{ go(idx-1); start(); };
   dots.forEach(d=> d.onclick = ()=>{ go(+d.dataset.i); start(); });
+  const sc = root.querySelector('.hero-scroll');
+  if (sc) sc.onclick = ()=> window.scrollTo({ top: root.offsetHeight - 1, behavior: 'smooth' });
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', start);
   start();
