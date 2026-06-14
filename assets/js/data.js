@@ -6,63 +6,64 @@
 
 const IMG = 'assets/img';
 
-const FALLBACK = { carro: `${IMG}/v1.jpg`, imovel: `${IMG}/i1.jpg`, produto: `${IMG}/p_iphone15.jpg` };
+const FALLBACK = { carro: `${IMG}/rv1.jpg`, imovel: `${IMG}/i1.jpg`, produto: `${IMG}/p_iphone15.jpg` };
 
+/* Veículos REAIS anunciados no site dele (título, preço, km, revenda e cidade reais) */
 const VEICULOS = [
-  { id:'v1', title:'VW T-Cross Highline', cat:'veiculos', type:'Carro', brand:'Volkswagen', year:2021, km:48000, fuel:'Flex', gear:'Automático', price:129900, oldPrice:138000, city:'Cuiabá', dealer:'Borges Veículos', img:`${IMG}/v2.jpg`, fb:FALLBACK.carro, badge:'Destaque' },
-  { id:'v2', title:'Toyota Corolla XEi', cat:'veiculos', type:'Carro', brand:'Toyota', year:2020, km:62000, fuel:'Flex', gear:'Automático', price:118900, city:'Várzea Grande', dealer:'Borges Veículos', img:`${IMG}/v3.jpg`, fb:FALLBACK.carro },
-  { id:'v3', title:'Honda HR-V EXL', cat:'veiculos', type:'Carro', brand:'Honda', year:2019, km:71000, fuel:'Flex', gear:'Automático', price:112900, city:'Rondonópolis', dealer:'Aliança Veículos', img:`${IMG}/v6.jpg`, fb:FALLBACK.carro },
-  { id:'v4', title:'Jeep Renegade Longitude', cat:'veiculos', type:'Carro', brand:'Jeep', year:2022, km:31000, fuel:'Flex', gear:'Automático', price:124900, oldPrice:131000, city:'Cuiabá', dealer:'Speed Car', img:`${IMG}/v7.jpg`, fb:FALLBACK.carro, badge:'Oferta' },
-  { id:'v5', title:'Chevrolet Onix Plus', cat:'veiculos', type:'Carro', brand:'Chevrolet', year:2021, km:39000, fuel:'Flex', gear:'Manual', price:78900, city:'Sinop', dealer:'Pokone Multimarcas', img:`${IMG}/v9.jpg`, fb:FALLBACK.carro },
-  { id:'v6', title:'Hyundai Creta Prestige', cat:'veiculos', type:'Carro', brand:'Hyundai', year:2020, km:54000, fuel:'Flex', gear:'Automático', price:109900, city:'Cuiabá', dealer:'Speed Car', img:`${IMG}/v1.jpg`, fb:FALLBACK.carro },
-  { id:'v7', title:'Fiat Pulse Drive', cat:'veiculos', type:'Carro', brand:'Fiat', year:2023, km:18000, fuel:'Flex', gear:'Automático', price:96900, oldPrice:102000, city:'Tangará da Serra', dealer:'Aliança Veículos', img:`${IMG}/v4.jpg`, fb:FALLBACK.carro, badge:'Oferta' },
-  { id:'v8', title:'Caminhonete Frota Premium', cat:'veiculos', type:'Caminhão', brand:'Diversos', year:2018, km:120000, fuel:'Diesel', gear:'Manual', price:189900, city:'Rondonópolis', dealer:'Borges Veículos', img:`${IMG}/v8.jpg`, fb:FALLBACK.carro, badge:'Premium' },
+  { id:'v1', title:'VW Amarok V6 Highline AC4 2019', cat:'veiculos', type:'Caminhão', brand:'Volkswagen', year:2019, km:110959, fuel:'Diesel', gear:'Automático', price:159900, city:'Cuiabá', dealer:'Borges Veículos', img:`${IMG}/rv1.jpg`, fb:FALLBACK.carro, badge:'Premium' },
+  { id:'v2', title:'Fiat Toro Endurance AT6 2021', cat:'veiculos', type:'Caminhão', brand:'Fiat', year:2021, km:99316, fuel:'Diesel', gear:'Automático', price:86900, city:'Cuiabá', dealer:'Borges Veículos', img:`${IMG}/rv2.jpg`, fb:FALLBACK.carro, badge:'Destaque' },
+  { id:'v3', title:'Hyundai HB20S 1.0 Comfort 2024', cat:'veiculos', type:'Carro', brand:'Hyundai', year:2024, km:0, fuel:'Flex', gear:'Manual', price:88990, city:'Rondonópolis', dealer:'Pokone Multimarcas', img:`${IMG}/rv3.jpg`, fb:FALLBACK.carro, badge:'0 km' },
+  { id:'v4', title:'Fiat Argo 1.0 2020', cat:'veiculos', type:'Carro', brand:'Fiat', year:2020, km:31571, fuel:'Flex', gear:'Manual', price:55900, city:'Cuiabá', dealer:'Borges Veículos', img:`${IMG}/rv4.jpg`, fb:FALLBACK.carro },
+  { id:'v5', title:'Honda Civic EX 2.0 Flex Automático 2017', cat:'veiculos', type:'Carro', brand:'Honda', year:2017, km:134000, fuel:'Flex', gear:'Automático', price:105900, city:'Rondonópolis', dealer:'V-CAR Vintage Veículos', img:`${IMG}/rv5.png`, fb:FALLBACK.carro },
+  { id:'v6', title:'BMW 318i 2.0 16v 2011/12 Automática', cat:'veiculos', type:'Carro', brand:'BMW', year:2011, km:86886, fuel:'Gasolina', gear:'Automático', price:55990, city:'Rondonópolis', dealer:'V-CAR Vintage Veículos', img:`${IMG}/rv6.png`, fb:FALLBACK.carro },
+  { id:'v7', title:'Fiat Palio Fire Economy 1.0 2014', cat:'veiculos', type:'Carro', brand:'Fiat', year:2014, km:206824, fuel:'Flex', gear:'Manual', price:32000, city:'Rondonópolis', dealer:'Shekinah Veículos', img:`${IMG}/rv7.jpg`, fb:FALLBACK.carro, badge:'Oferta' },
+  { id:'v8', title:'Ford F-250 Motor MWM 6cil Diesel 2001', cat:'veiculos', type:'Caminhão', brand:'Ford', year:2001, km:null, fuel:'Diesel', gear:'Manual', price:130000, city:'Rondonópolis', dealer:'V-CAR Vintage Veículos', img:`${IMG}/rv8.png`, fb:FALLBACK.carro },
 ];
 
+/* Imóveis REAIS anunciados no site dele (Rondonópolis-MT) */
 const IMOVEIS = [
-  { id:'i1', title:'Casa Residencial Ceci III', cat:'imoveis', type:'Casa', deal:'Venda', beds:3, baths:2, garage:2, area:160, price:420000, city:'Várzea Grande', img:`${IMG}/i1.jpg`, fb:FALLBACK.imovel, badge:'Destaque' },
-  { id:'i2', title:'Casa ampla com quintal', cat:'imoveis', type:'Casa', deal:'Venda', beds:3, baths:2, garage:3, area:200, price:530000, city:'Cuiabá', img:`${IMG}/i2.jpg`, fb:FALLBACK.imovel },
-  { id:'i3', title:'Sobrado moderno', cat:'imoveis', type:'Casa', deal:'Venda', beds:3, baths:3, garage:2, area:180, price:610000, city:'Cuiabá', img:`${IMG}/i3.jpg`, fb:FALLBACK.imovel, badge:'Premium' },
-  { id:'i4', title:'Casa para alugar — Centro', cat:'imoveis', type:'Casa', deal:'Aluguel', beds:2, baths:1, garage:1, area:90, price:1600, city:'Várzea Grande', img:`${IMG}/i4.jpg`, fb:FALLBACK.imovel },
-  { id:'i5', title:'Residência com área de lazer', cat:'imoveis', type:'Casa', deal:'Venda', beds:4, baths:3, garage:3, area:260, price:780000, city:'Cuiabá', img:`${IMG}/i5.webp`, fb:FALLBACK.imovel, badge:'Oportunidade' },
-  { id:'i6', title:'Casa térrea 2 quartos', cat:'imoveis', type:'Casa', deal:'Aluguel', beds:2, baths:1, garage:2, area:110, price:1400, city:'Rondonópolis', img:`${IMG}/i6.jpg`, fb:FALLBACK.imovel, badge:'Oferta' },
+  { id:'i1', title:'Apartamento novo 1 quarto — próx. SESC', cat:'imoveis', type:'Apartamento', deal:'Aluguel', beds:1, baths:1, garage:1, area:42, price:1200, city:'Rondonópolis', img:`${IMG}/i1.jpg`, fb:FALLBACK.imovel, badge:'Novo' },
+  { id:'i2', title:'Apartamento 1 quarto — Bairro Parati', cat:'imoveis', type:'Apartamento', deal:'Aluguel', beds:1, baths:1, garage:1, area:38, price:1000, city:'Rondonópolis', img:`${IMG}/i3.jpg`, fb:FALLBACK.imovel },
+  { id:'i3', title:'Casa Condomínio Terra Nova — 3 quartos c/ suíte', cat:'imoveis', type:'Casa', deal:'Aluguel', beds:3, baths:2, garage:2, area:140, price:2700, city:'Rondonópolis', img:`${IMG}/i4.jpg`, fb:FALLBACK.imovel, badge:'Destaque' },
+  { id:'i4', title:'Apartamento — Parque das Rosas, próx. SESC', cat:'imoveis', type:'Apartamento', deal:'Aluguel', beds:2, baths:1, garage:1, area:55, price:1200, city:'Rondonópolis', img:`${IMG}/i5.webp`, fb:FALLBACK.imovel },
+  { id:'i5', title:'Casa nova — Condomínio Vicente Bossoni', cat:'imoveis', type:'Casa', deal:'Aluguel', beds:2, baths:1, garage:2, area:90, price:1300, city:'Rondonópolis', img:`${IMG}/i6.jpg`, fb:FALLBACK.imovel },
+  { id:'i6', title:'Sítio 33,6 hectares — a 15 min do centro', cat:'imoveis', type:'Rural', deal:'Venda', beds:3, baths:2, garage:5, areaHa:33.6, price:5000000, city:'Rondonópolis', img:`${IMG}/ri7.png`, fb:FALLBACK.imovel, badge:'Oportunidade' },
 ];
 
 /* Produtos REAIS da Loja Virtual do anunciante (comprefacilmt.com.br)
    price = null quando o valor é "Sob consulta" no site dele */
 const PRODUTOS = [
-  { id:'p1', title:'Apple iPhone 15 Pro 128GB Titânio — Pronta entrega', cat:'loja', group:'Eletrônicos', price:4089, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/p_iphone15.jpg`, fb:FALLBACK.produto, badge:'Pronta entrega', featured:true },
-  { id:'p2', title:'iPhone 12 Dual SIM 64GB Preto — Recondicionado', cat:'loja', group:'Eletrônicos', price:1749, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/p_iphone12.jpg`, fb:FALLBACK.produto, badge:'Oferta' },
-  { id:'p3', title:'iPhone 17 Pro 256GB Azul-profundo — Loja Oficial Apple', cat:'loja', group:'Eletrônicos', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/iphone17.jpg`, fb:FALLBACK.produto, badge:'Lacrado' },
-  { id:'p4', title:'TG-15mg — 4 Ampolas Tirzepatida Original', cat:'loja', group:'Saúde', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/tg.webp`, fb:FALLBACK.produto, badge:'Original' },
-  { id:'p5', title:'Tirzepatida Lipoless — 15mg', cat:'loja', group:'Saúde', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/tirzepatida.webp`, fb:FALLBACK.produto },
-  { id:'p6', title:'Retatrutida Diamond Veltrane — 120mg / 6ml', cat:'loja', group:'Saúde', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/retatrutida.png`, fb:FALLBACK.produto },
-  { id:'p7', title:'Kit 4 Potes Acrílico 3,8L Organizador de Geladeira', cat:'loja', group:'Casa', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/potes.jpg`, fb:FALLBACK.produto },
-  { id:'p8', title:'Soprador de Folhas Turbo 46V com 2 Baterias', cat:'loja', group:'Ferramentas', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/soprador.png`, fb:FALLBACK.produto, badge:'Sem fio' },
+  { id:'p1', title:'Apple iPhone 15 Pro 128GB Titânio — Pronta entrega', cat:'loja', group:'Eletrônicos', price:4089, city:'Rondonópolis', seller:'Compre Fácil MT', img:`${IMG}/p_iphone15.jpg`, fb:FALLBACK.produto, badge:'Pronta entrega', featured:true },
+  { id:'p2', title:'iPhone 12 Dual SIM 64GB Preto — Recondicionado', cat:'loja', group:'Eletrônicos', price:1749, city:'Rondonópolis', seller:'Compre Fácil MT', img:`${IMG}/p_iphone12.jpg`, fb:FALLBACK.produto, badge:'Oferta' },
+  { id:'p3', title:'iPhone 17 Pro 256GB Azul-profundo — Loja Oficial Apple', cat:'loja', group:'Eletrônicos', price:null, city:'Rondonópolis', seller:'Compre Fácil MT', img:`${IMG}/iphone17.jpg`, fb:FALLBACK.produto, badge:'Lacrado' },
+  { id:'p4', title:'TG-15mg — 4 Ampolas Tirzepatida Original', cat:'loja', group:'Saúde', price:null, city:'Rondonópolis', seller:'Compre Fácil MT', img:`${IMG}/tg.webp`, fb:FALLBACK.produto, badge:'Original' },
+  { id:'p5', title:'Tirzepatida Lipoless — 15mg', cat:'loja', group:'Saúde', price:null, city:'Rondonópolis', seller:'Compre Fácil MT', img:`${IMG}/tirzepatida.webp`, fb:FALLBACK.produto },
+  { id:'p6', title:'Retatrutida Diamond Veltrane — 120mg / 6ml', cat:'loja', group:'Saúde', price:null, city:'Rondonópolis', seller:'Compre Fácil MT', img:`${IMG}/retatrutida.png`, fb:FALLBACK.produto },
+  { id:'p7', title:'Kit 4 Potes Acrílico 3,8L Organizador de Geladeira', cat:'loja', group:'Casa', price:null, city:'Rondonópolis', seller:'Compre Fácil MT', img:`${IMG}/potes.jpg`, fb:FALLBACK.produto },
+  { id:'p8', title:'Soprador de Folhas Turbo 46V com 2 Baterias', cat:'loja', group:'Ferramentas', price:null, city:'Rondonópolis', seller:'Compre Fácil MT', img:`${IMG}/soprador.png`, fb:FALLBACK.produto, badge:'Sem fio' },
 ];
 
+/* Revendas REAIS que anunciam no site dele */
 const DEALERS = [
-  { name:'Speed Car', type:'Veículos', city:'Cuiabá', rating:5, color:'#1657a0' },
-  { name:'Aliança Veículos', type:'Veículos', city:'Rondonópolis', rating:5, color:'#e8730a' },
-  { name:'Borges Veículos', type:'Veículos', city:'Várzea Grande', rating:4, color:'#16a34a' },
-  { name:'Pokone Multimarcas', type:'Veículos', city:'Sinop', rating:5, color:'#7c3aed' },
-  { name:'TechMT', type:'Eletrônicos', city:'Cuiabá', rating:5, color:'#0891b2' },
+  { name:'Borges Veículos', type:'Veículos', city:'Cuiabá', rating:5, color:'#bd1218' },
+  { name:'Peixinho Automóveis', type:'Veículos', city:'Rondonópolis', rating:5, color:'#262a33' },
+  { name:'V-CAR Vintage Veículos', type:'Veículos', city:'Rondonópolis', rating:5, color:'#bd1218' },
+  { name:'Pokone Multimarcas', type:'Veículos', city:'Rondonópolis', rating:4, color:'#262a33' },
+  { name:'Shekinah Veículos', type:'Veículos', city:'Rondonópolis', rating:5, color:'#bd1218' },
 ];
 
 const REVENDAS = [
-  { name:'Speed Car', segment:'Revenda de veículos', city:'Cuiabá', anuncios:48, rating:5, color:'#1657a0', cover:'#103e72' },
-  { name:'Aliança Veículos', segment:'Revenda de veículos', city:'Rondonópolis', anuncios:62, rating:5, color:'#e8730a', cover:'#0a2540' },
-  { name:'Borges Veículos', segment:'Revenda de veículos', city:'Várzea Grande', anuncios:35, rating:4, color:'#16a34a', cover:'#0d2f54' },
-  { name:'Pokone Multimarcas', segment:'Revenda de veículos', city:'Sinop', anuncios:51, rating:5, color:'#7c3aed', cover:'#103e72' },
-  { name:'Imóveis Cuiabá', segment:'Imobiliária', city:'Cuiabá', anuncios:120, rating:5, color:'#0891b2', cover:'#0a2540' },
-  { name:'Pantanal Imóveis', segment:'Imobiliária', city:'Várzea Grande', anuncios:88, rating:4, color:'#be123c', cover:'#0d2f54' },
-  { name:'MT Corretagem', segment:'Corretor autônomo', city:'Rondonópolis', anuncios:27, rating:5, color:'#15803d', cover:'#103e72' },
-  { name:'Lar & Cia Imóveis', segment:'Imobiliária', city:'Sorriso', anuncios:43, rating:4, color:'#7c2d12', cover:'#0a2540' },
-  { name:'TechMT Store', segment:'Loja de eletrônicos', city:'Cuiabá', anuncios:64, rating:5, color:'#4338ca', cover:'#0d2f54' },
+  { name:'Borges Veículos', segment:'Revenda de veículos', city:'Cuiabá', color:'#bd1218', cover:'#14161b' },
+  { name:'Peixinho Automóveis', segment:'Revenda de veículos', city:'Rondonópolis', color:'#262a33', cover:'#1c1f26' },
+  { name:'V-CAR Vintage Veículos', segment:'Revenda de veículos', city:'Rondonópolis', color:'#bd1218', cover:'#14161b' },
+  { name:'Pokone Multimarcas', segment:'Revenda de veículos', city:'Rondonópolis', color:'#262a33', cover:'#1c1f26' },
+  { name:'Shekinah Veículos', segment:'Revenda de veículos', city:'Rondonópolis', color:'#bd1218', cover:'#14161b' },
+  { name:'SpeedCar', segment:'Revenda de veículos', city:'Rondonópolis', color:'#262a33', cover:'#1c1f26' },
+  { name:'Aliança Veículos', segment:'Revenda de veículos', city:'Rondonópolis', color:'#bd1218', cover:'#14161b' },
 ];
 
 /* Hero full-screen — fotos reais (paisagem, alta resolução) */
-const HERO_SLIDES = [`${IMG}/v2.jpg`, `${IMG}/i1.jpg`, `${IMG}/v6.jpg`, `${IMG}/v7.jpg`];
+const HERO_SLIDES = [`${IMG}/rv1.jpg`, `${IMG}/rv2.jpg`, `${IMG}/i1.jpg`, `${IMG}/rv4.jpg`];
 
 const ALL = [...VEICULOS, ...IMOVEIS, ...PRODUTOS];
 

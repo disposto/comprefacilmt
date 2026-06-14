@@ -151,7 +151,7 @@ function renderFooter() {
           <div class="contact-line">${ICONS.wa}<a href="${waLink('Olá!')}" target="_blank" rel="noopener">${CONTATO.whatsappLabel}</a></div>
           <div class="contact-line">${ICONS.phone}<a href="tel:+${CONTATO.whatsapp2}">${CONTATO.whatsappLabel2}</a></div>
           <div class="contact-line">${ICONS.mail}<a href="mailto:${CONTATO.email}">${CONTATO.email}</a></div>
-          <div class="contact-line">${ICONS.pin}<span>Cuiabá / Várzea Grande — MT</span></div>
+          <div class="contact-line">${ICONS.pin}<span>Rondonópolis — MT (atende todo o estado)</span></div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -191,7 +191,7 @@ function vehicleCard(v) {
       <h3 class="title"><a href="${href}">${v.title}</a></h3>
       <div class="meta">
         <span>${ICONS.cal} ${v.year}</span>
-        <span>${ICONS.gauge} ${v.km.toLocaleString('pt-BR')} km</span>
+        ${v.km!=null ? `<span>${ICONS.gauge} ${v.km===0?'0 km (novo)':v.km.toLocaleString('pt-BR')+' km'}</span>` : ''}
         <span>${ICONS.gear} ${v.gear}</span>
       </div>
       <div class="price-row">
@@ -220,7 +220,7 @@ function propertyCard(p) {
         ${bedsHtml}
         <span>${ICONS.bath} ${p.baths}</span>
         <span>${ICONS.car} ${p.garage}</span>
-        <span>${ICONS.ruler} ${p.area} m²</span>
+        <span>${ICONS.ruler} ${p.areaHa ? p.areaHa.toLocaleString('pt-BR')+' ha' : p.area+' m²'}</span>
       </div>
       <div class="price-row">
         <div class="price">${formatBRL(p.price)}${p.deal==='Aluguel'?'<small style="text-decoration:none;color:var(--ink-400);font-weight:600">/mês</small>':''}</div>
@@ -298,7 +298,7 @@ function renderCart() {
       <button class="ci-rm" onclick="removeFromCart('${id}')" aria-label="Remover">${ICONS.trash}</button>
     </div>`;
   }).join('');
-  if (ship) { ship.style.display = 'flex'; ship.innerHTML = `${ICONS.truck} <span>Frete <b>grátis</b> em Cuiabá e Várzea Grande</span>`; }
+  if (ship) { ship.style.display = 'flex'; ship.innerHTML = `${ICONS.truck} <span>Combine entrega <b>direto com o vendedor</b></span>`; }
   const msg = 'Olá! Quero finalizar a compra destes itens:\n' + ids.map(id => { const p = PRODUTOS.find(x=>x.id===id); return `• ${c[id]}x ${p.title} (${formatBRL(p.price)})`; }).join('\n') + `\n\nTotal: ${formatBRL(total)}`;
   foot.innerHTML = `
     <div class="cart-sub-line"><span>Subtotal (${count} ${count===1?'item':'itens'})</span><span>${formatBRL(total)}</span></div>

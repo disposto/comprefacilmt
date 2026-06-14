@@ -202,12 +202,11 @@ function initRevendas() {
         <div class="r-body">
           <h3>${r.name}</h3>
           <div class="r-tag">${r.segment} · ${r.city} — MT</div>
-          <div class="stars">${stars(r.rating)}</div>
-          <div class="r-meta"><span><b>${r.anuncios}</b> anúncios ativos</span></div>
+          <div class="r-meta"><span class="accent-text" style="font-weight:600">${ICONS.shield} Parceiro verificado</span></div>
           <a href="${waLink('Olá! Vi a '+r.name+' na Compre Fácil MT e gostaria de mais informações.')}" target="_blank" rel="noopener" class="btn btn-dark btn-sm btn-block">Ver anúncios</a>
         </div>
       </div>`).join('') : `<div class="empty" style="grid-column:1/-1">${ICONS.search}<h3>Nenhuma revenda encontrada</h3></div>`;
-    const c = document.getElementById('result-count'); if (c) c.innerHTML = `<b>${res.length}</b> ${res.length===1?'parceiro':'parceiros'}`;
+    const c = document.getElementById('result-count'); if (c) c.innerHTML = `<b>${res.length}</b> ${res.length===1?'revenda':'revendas'}`;
     initReveal();
   }
   document.querySelectorAll('[data-filter]').forEach(el=>el.addEventListener('input', render));
@@ -255,7 +254,7 @@ function initDetalhe() {
     <div class="spec"><span>Quartos</span><b>${item.beds||'—'}</b></div>
     <div class="spec"><span>Banheiros</span><b>${item.baths}</b></div>
     <div class="spec"><span>Vagas</span><b>${item.garage}</b></div>
-    <div class="spec"><span>Área</span><b>${item.area} m²</b></div>`;
+    <div class="spec"><span>Área</span><b>${item.areaHa ? item.areaHa.toLocaleString('pt-BR')+' ha' : item.area+' m²'}</b></div>`;
   else specs = `
     <div class="spec"><span>Categoria</span><b>${item.group}</b></div>
     <div class="spec"><span>Vendedor</span><b>${item.seller}</b></div>
