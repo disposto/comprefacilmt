@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imóveis — Compre Fácil MT</title>
+  <meta name="description" content="Casas, apartamentos e imóveis comerciais à venda e para alugar em Mato Grosso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="imoveis">
+  <div id="header"></div>
+
+  <div class="page-head">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Início</a> / Imóveis</div>
+      <h1>Imóveis</h1>
+      <p>Casas, apartamentos e pontos comerciais para comprar ou alugar em Mato Grosso.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="listing-layout">
+      <aside class="filters">
+        <h3>Filtros <span class="clear" id="clearFilters">Limpar</span></h3>
+        <div class="filter-group">
+          <label for="q">Buscar</label>
+          <input type="text" id="q" data-filter placeholder="Bairro, cidade, tipo...">
+        </div>
+        <div class="filter-group">
+          <label>Tipo</label>
+          <select id="fType" data-filter>
+            <option value="">Todos</option>
+            <option>Casa</option><option>Apartamento</option><option>Comercial</option><option>Rural</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Quartos (mínimo)</label>
+          <select id="fBeds" data-filter>
+            <option value="">Qualquer</option>
+            <option value="1">1+</option><option value="2">2+</option>
+            <option value="3">3+</option><option value="4">4+</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Faixa de preço (R$)</label>
+          <div class="range-row">
+            <input type="number" id="fMin" data-filter placeholder="Mín">
+            <input type="number" id="fMax" data-filter placeholder="Máx">
+          </div>
+        </div>
+      </aside>
+
+      <div>
+        <div class="chips" id="dealChips">
+          <button class="chip active" data-type="todos">Todos</button>
+          <button class="chip" data-type="Venda">Comprar</button>
+          <button class="chip" data-type="Aluguel">Alugar</button>
+        </div>
+        <div class="results-top">
+          <span class="count" id="result-count"></span>
+          <div class="sort">
+            <label for="fSort" style="font-size:14px;color:var(--ink-500)">Ordenar:</label>
+            <select id="fSort" data-filter>
+              <option value="">Relevância</option>
+              <option value="menor">Menor preço</option>
+              <option value="maior">Maior preço</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid grid-3" id="listing-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

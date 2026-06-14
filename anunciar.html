@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anunciar grátis — Compre Fácil MT</title>
+  <meta name="description" content="Anuncie seu veículo, imóvel ou produto de graça e venda rápido para todo o Mato Grosso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="anunciar">
+  <div id="header"></div>
+
+  <div class="page-head">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Início</a> / Anunciar</div>
+      <h1>Anuncie grátis e venda rápido</h1>
+      <p>Cadastre seu anúncio em poucos minutos e alcance milhares de compradores em Mato Grosso.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="benefits">
+        <div class="benefit reveal"><div class="ic" id="b1"></div><div><h4>100% grátis</h4><p>Crie seu anúncio sem pagar nada e sem taxas escondidas.</p></div></div>
+        <div class="benefit reveal"><div class="ic" id="b2"></div><div><h4>Muito mais alcance</h4><p>Seu produto visto por milhares de pessoas todos os dias.</p></div></div>
+        <div class="benefit reveal"><div class="ic" id="b3"></div><div><h4>Negociação segura</h4><p>Contato direto pelo WhatsApp, sem intermediários.</p></div></div>
+      </div>
+
+      <div class="form-card reveal">
+        <h2 style="margin-bottom:6px">Dados do anúncio</h2>
+        <p class="muted" style="margin-top:0;margin-bottom:24px">Preencha os campos abaixo. É rapidinho!</p>
+        <form id="adForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="aCat">Categoria</label>
+              <select id="aCat" required>
+                <option value="">Selecione...</option>
+                <option>Veículo</option><option>Imóvel</option><option>Produto</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="aTitle">Título do anúncio</label>
+              <input type="text" id="aTitle" placeholder="Ex.: Violão Takamine seminovo" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="aPrice">Preço (R$)</label>
+              <input type="number" id="aPrice" placeholder="2000" required>
+            </div>
+            <div class="form-field">
+              <label for="aCity">Cidade</label>
+              <input type="text" id="aCity" placeholder="Cuiabá" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="aDesc">Descrição</label>
+            <textarea id="aDesc" placeholder="Descreva seu produto, estado de conservação, detalhes..."></textarea>
+          </div>
+          <div class="form-field">
+            <label>Fotos</label>
+            <label class="upload" for="aFiles" id="uploadBox"></label>
+            <input type="file" id="aFiles" multiple accept="image/*" style="display:none">
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="aName">Seu nome</label>
+              <input type="text" id="aName" placeholder="Nome completo" required>
+            </div>
+            <div class="form-field">
+              <label for="aPhone">WhatsApp</label>
+              <input type="tel" id="aPhone" placeholder="(66) 90000-0000" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px">Publicar anúncio grátis</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('b1').innerHTML = ICONS.bolt;
+      document.getElementById('b2').innerHTML = ICONS.users;
+      document.getElementById('b3').innerHTML = ICONS.shield;
+      document.getElementById('uploadBox').innerHTML = ICONS.upload + '<div>Clique para enviar fotos<br><small style="color:var(--ink-400)">JPG ou PNG até 5MB cada</small></div>';
+    });
+  </script>
+</body>
+</html>
