@@ -1,5 +1,5 @@
 /* =========================================================
-   Componentes compartilhados — header, footer, cards, ícones
+   Componentes compartilhados — header, footer, cards, ícones, carrinho
    ========================================================= */
 
 const ICONS = {
@@ -10,6 +10,7 @@ const ICONS = {
   cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
   gauge:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 0-10-10"/><path d="M12 12l4-2"/></svg>',
   gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M20 19V5"/><path d="M4 12h16"/><circle cx="4" cy="12" r="2"/><circle cx="20" cy="12" r="2"/></svg>',
+  fuel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="15" y2="22"/><line x1="4" y1="9" x2="14" y2="9"/><path d="M14 22V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v18"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 2 2a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 5"/></svg>',
   bed:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>',
   bath:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.7 3 4 3.7 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5H4"/><line x1="10" y1="5" x2="8" y2="7"/></svg>',
   car:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3v-6l2-5h12l2 5v6h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>',
@@ -28,20 +29,42 @@ const ICONS = {
   upload:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>',
   bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
   users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  building:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="6"/><line x1="15" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="9" y2="10"/><line x1="15" y1="10" x2="15" y2="10"/><path d="M9 22v-4h6v4"/></svg>',
+  tag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>',
+  google:'<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>',
 };
 
 const NAV = [
   { href:'index.html', label:'Início' },
-  { href:'veiculos.html', label:'Veículos' },
-  { href:'imoveis.html', label:'Imóveis' },
+  { label:'Veículos', drop:[
+    { href:'veiculos.html', b:'Comprar', s:'Carros, motos e caminhões' },
+    { href:'anunciar.html', b:'Vender', s:'Anuncie seu veículo grátis' },
+  ]},
+  { label:'Imóveis', drop:[
+    { href:'imoveis.html', b:'Comprar / Alugar', s:'Casas, apês e comerciais' },
+    { href:'anunciar.html', b:'Vender / Anunciar', s:'Cadastre seu imóvel' },
+    { href:'revendas.html', b:'Imobiliárias e Corretores', s:'Parceiros verificados' },
+  ]},
   { href:'loja.html', label:'Loja Virtual' },
-  { href:'anunciar.html', label:'Anunciar' },
+  { href:'revendas.html', label:'Revendas' },
+  { href:'busca.html', label:'Busca Avançada' },
 ];
 
 function renderHeader() {
   const page = (location.pathname.split('/').pop() || 'index.html');
-  const navItems = NAV.map(n => `<a href="${n.href}" class="${n.href===page?'active':''}">${n.label}</a>`).join('');
-  const mobItems = NAV.map(n => `<a href="${n.href}" class="${n.href===page?'active':''}">${n.label}</a>`).join('');
+  const navItems = NAV.map(n => {
+    if (n.drop) {
+      const inner = n.drop.map(d=>`<a href="${d.href}"><b>${d.b}</b><span>${d.s}</span></a>`).join('');
+      const act = n.drop.some(d=>d.href===page) ? 'active' : '';
+      return `<div class="has-drop"><a class="${act}" href="${n.drop[0].href}">${n.label}</a><div class="drop">${inner}</div></div>`;
+    }
+    return `<a href="${n.href}" class="${n.href===page?'active':''}">${n.label}</a>`;
+  }).join('');
+
+  const mobItems = NAV.map(n => {
+    if (n.drop) return `<a href="${n.drop[0].href}">${n.label}</a><div class="drop-m">${n.drop.map(d=>`<a href="${d.href}">${d.b}</a>`).join('')}</div>`;
+    return `<a href="${n.href}" class="${n.href===page?'active':''}">${n.label}</a>`;
+  }).join('');
 
   document.getElementById('header').innerHTML = `
   <div class="topbar">
@@ -61,7 +84,8 @@ function renderHeader() {
       </a>
       <nav class="main-nav">${navItems}</nav>
       <div class="header-actions">
-        <a href="anunciar.html" class="btn btn-ghost btn-sm">Anunciar grátis</a>
+        <span class="auth-links"><a href="login.html">Entrar</a><span class="sep">|</span><a href="cadastro.html">Cadastrar</a></span>
+        <button class="cart-btn" aria-label="Carrinho" onclick="openCart()">${ICONS.cart}<span class="cart-count hidden" id="cartCount">0</span></button>
         <a href="${waLink('Olá! Quero falar com a Compre Fácil MT.')}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">${ICONS.wa} WhatsApp</a>
         <button class="menu-toggle" aria-label="Menu" onclick="toggleMobileNav(true)">${ICONS.menu}</button>
       </div>
@@ -73,6 +97,7 @@ function renderHeader() {
         <span class="mark">${ICONS.cart}</span><span>Compre Fácil<b>MT</b></span>
       </a>
       ${mobItems}
+      <a href="login.html" class="btn btn-ghost btn-block">Entrar / Cadastrar</a>
       <a href="anunciar.html" class="btn btn-dark btn-block">Anunciar grátis</a>
       <a href="${waLink('Olá! Vim pelo site Compre Fácil MT.')}" target="_blank" rel="noopener" class="btn btn-wa btn-block">${ICONS.wa} Chamar no WhatsApp</a>
     </div>
@@ -112,11 +137,11 @@ function renderFooter() {
         <div>
           <h4>Institucional</h4>
           <ul>
-            <li><a href="index.html#como-funciona">Como funciona</a></li>
+            <li><a href="busca.html">Busca avançada</a></li>
+            <li><a href="revendas.html">Revendas e corretores</a></li>
             <li><a href="anunciar.html">Anunciar</a></li>
-            <li><a href="index.html#lojistas">Lojistas parceiros</a></li>
-            <li><a href="#">Termos de uso</a></li>
-            <li><a href="#">Privacidade</a></li>
+            <li><a href="login.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
           </ul>
         </div>
         <div>
@@ -133,6 +158,15 @@ function renderFooter() {
       </div>
     </div>
   </footer>
+
+  <!-- Carrinho -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrinho">
+    <div class="cart-head"><h3>Seu carrinho</h3><button class="cart-close" onclick="closeCart()" aria-label="Fechar">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot" id="cartFoot"></div>
+  </aside>
+
   <a href="${waLink('Olá! Vim pelo site e gostaria de mais informações.')}" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">${ICONS.wa}</a>`;
 }
 
@@ -142,15 +176,16 @@ function stars(n) { return '★'.repeat(n) + '☆'.repeat(5-n); }
 function vehicleCard(v) {
   const old = v.oldPrice ? `<small>${formatBRL(v.oldPrice)}</small>` : '';
   const badge = v.badge ? `<span class="badge ${v.badge==='Oferta'?'green':''}">${v.badge}</span>` : '';
+  const href = `detalhe.html?id=${v.id}`;
   return `<article class="card reveal">
     <div class="thumb">
-      <img src="${v.img}" alt="${v.title}" loading="lazy" onerror="this.onerror=null;this.src='${v.fb}'">
+      <a href="${href}"><img src="${v.img}" alt="${v.title}" loading="lazy" onerror="this.onerror=null;this.src='${v.fb}'"></a>
       ${badge}
       <button class="fav" aria-label="Favoritar" onclick="toggleFav(this)">${ICONS.heart}</button>
     </div>
     <div class="body">
       <span class="cat-tag">${v.brand} · ${v.type}</span>
-      <h3 class="title">${v.title}</h3>
+      <h3 class="title"><a href="${href}">${v.title}</a></h3>
       <div class="meta">
         <span>${ICONS.cal} ${v.year}</span>
         <span>${ICONS.gauge} ${v.km.toLocaleString('pt-BR')} km</span>
@@ -160,24 +195,24 @@ function vehicleCard(v) {
         <div><div class="price">${formatBRL(v.price)}</div>${old}</div>
         <span class="loc">${ICONS.pin} ${v.city}</span>
       </div>
-      <a href="${waLink('Olá! Tenho interesse no '+v.title+' ('+formatBRL(v.price)+'). Ainda está disponível?')}" target="_blank" rel="noopener" class="btn btn-dark btn-sm btn-block card-cta">Tenho interesse</a>
+      <a href="${href}" class="btn btn-dark btn-sm btn-block card-cta">Ver detalhes</a>
     </div>
   </article>`;
 }
 
 function propertyCard(p) {
   const badge = p.badge ? `<span class="badge ${p.badge==='Oferta'?'green':''}">${p.badge}</span>` : '';
-  const dealBadge = `<span class="cat-tag">${p.deal} · ${p.type}</span>`;
   const bedsHtml = p.beds ? `<span>${ICONS.bed} ${p.beds}</span>` : '';
+  const href = `detalhe.html?id=${p.id}`;
   return `<article class="card reveal">
     <div class="thumb">
-      <img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.onerror=null;this.src='${p.fb}'">
+      <a href="${href}"><img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.onerror=null;this.src='${p.fb}'"></a>
       ${badge}
       <button class="fav" aria-label="Favoritar" onclick="toggleFav(this)">${ICONS.heart}</button>
     </div>
     <div class="body">
-      ${dealBadge}
-      <h3 class="title">${p.title}</h3>
+      <span class="cat-tag">${p.deal} · ${p.type}</span>
+      <h3 class="title"><a href="${href}">${p.title}</a></h3>
       <div class="meta">
         ${bedsHtml}
         <span>${ICONS.bath} ${p.baths}</span>
@@ -188,7 +223,7 @@ function propertyCard(p) {
         <div class="price">${formatBRL(p.price)}${p.deal==='Aluguel'?'<small style="text-decoration:none;color:var(--ink-400);font-weight:600">/mês</small>':''}</div>
         <span class="loc">${ICONS.pin} ${p.city}</span>
       </div>
-      <a href="${waLink('Olá! Tenho interesse no imóvel: '+p.title+' ('+formatBRL(p.price)+').')}" target="_blank" rel="noopener" class="btn btn-dark btn-sm btn-block card-cta">Agendar visita</a>
+      <a href="${href}" class="btn btn-dark btn-sm btn-block card-cta">Ver detalhes</a>
     </div>
   </article>`;
 }
@@ -196,25 +231,66 @@ function propertyCard(p) {
 function productCard(p) {
   const old = p.oldPrice ? `<small>${formatBRL(p.oldPrice)}</small>` : '';
   const badge = p.badge ? `<span class="badge ${p.badge==='Oferta'?'green':''}">${p.badge}</span>` : '';
+  const href = `detalhe.html?id=${p.id}`;
   return `<article class="card reveal">
     <div class="thumb">
-      <img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.onerror=null;this.src='${p.fb}'">
+      <a href="${href}"><img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.onerror=null;this.src='${p.fb}'"></a>
       ${badge}
       <button class="fav" aria-label="Favoritar" onclick="toggleFav(this)">${ICONS.heart}</button>
     </div>
     <div class="body">
       <span class="cat-tag">${p.group}</span>
-      <h3 class="title">${p.title}</h3>
+      <h3 class="title"><a href="${href}">${p.title}</a></h3>
       <div class="meta"><span>${ICONS.pin} ${p.city}</span><span>por ${p.seller}</span></div>
       <div class="price-row">
         <div><div class="price">${formatBRL(p.price)}</div>${old}</div>
       </div>
-      <a href="${waLink('Olá! Tenho interesse no produto: '+p.title+' ('+formatBRL(p.price)+'). Ainda tem disponível?')}" target="_blank" rel="noopener" class="btn btn-primary btn-sm btn-block card-cta">Comprar / Negociar</a>
+      <button class="btn btn-primary btn-sm btn-block card-cta" onclick="addToCart('${p.id}')">${ICONS.cart} Adicionar</button>
     </div>
   </article>`;
 }
 
 function toggleFav(btn) { btn.classList.toggle('on'); }
+
+/* ---------- Carrinho (localStorage) ---------- */
+const CART_KEY = 'cf_cart';
+function getCart() { try { return JSON.parse(localStorage.getItem(CART_KEY)) || {}; } catch(e){ return {}; } }
+function saveCart(c) { localStorage.setItem(CART_KEY, JSON.stringify(c)); updateCartCount(); }
+function addToCart(id) { const c = getCart(); c[id] = (c[id]||0)+1; saveCart(c); renderCart(); openCart(); showToast('Adicionado ao carrinho ✅'); }
+function removeFromCart(id) { const c = getCart(); delete c[id]; saveCart(c); renderCart(); }
+function updateCartCount() {
+  const el = document.getElementById('cartCount'); if (!el) return;
+  const total = Object.values(getCart()).reduce((a,b)=>a+b,0);
+  el.textContent = total; el.classList.toggle('hidden', total===0);
+}
+function renderCart() {
+  const wrap = document.getElementById('cartItems'); const foot = document.getElementById('cartFoot');
+  if (!wrap) return;
+  const c = getCart(); const ids = Object.keys(c);
+  if (!ids.length) {
+    wrap.innerHTML = `<div class="cart-empty">${ICONS.cart}<p>Seu carrinho está vazio.</p></div>`;
+    foot.innerHTML = `<a href="loja.html" class="btn btn-dark btn-block">Ir para a loja</a>`;
+    return;
+  }
+  let total = 0;
+  wrap.innerHTML = ids.map(id => {
+    const p = PRODUTOS.find(x=>x.id===id); if (!p) return '';
+    total += p.price * c[id];
+    return `<div class="cart-item">
+      <img src="${p.img}" alt="${p.title}" onerror="this.onerror=null;this.src='${p.fb}'">
+      <div class="ci-body">
+        <h4>${p.title}</h4>
+        <div class="ci-price">${c[id]}× ${formatBRL(p.price)}</div>
+        <button class="ci-rm" onclick="removeFromCart('${id}')">Remover</button>
+      </div>
+    </div>`;
+  }).join('');
+  const msg = 'Olá! Quero finalizar a compra destes itens:\n' + ids.map(id => { const p = PRODUTOS.find(x=>x.id===id); return `• ${c[id]}x ${p.title} (${formatBRL(p.price)})`; }).join('\n') + `\n\nTotal: ${formatBRL(total)}`;
+  foot.innerHTML = `<div class="cart-total"><span>Total</span><b>${formatBRL(total)}</b></div>
+    <a href="${waLink(msg)}" target="_blank" rel="noopener" class="btn btn-wa btn-block">${ICONS.wa} Finalizar no WhatsApp</a>`;
+}
+function openCart() { document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); document.body.style.overflow='hidden'; renderCart(); }
+function closeCart() { document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); document.body.style.overflow=''; }
 
 /* ---------- Reveal on scroll ---------- */
 function initReveal() {
@@ -231,13 +307,14 @@ function showToast(msg) {
   if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
   t.innerHTML = ICONS.check + '<span>' + msg + '</span>';
   requestAnimationFrame(() => t.classList.add('show'));
-  setTimeout(() => t.classList.remove('show'), 3500);
+  clearTimeout(t._tm); t._tm = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
 /* ---------- Boot ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('header')) renderHeader();
   if (document.getElementById('footer')) renderFooter();
+  updateCartCount();
   if (typeof initPage === 'function') initPage();
   initReveal();
 });

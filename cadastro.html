@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta — Compre Fácil MT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="cadastro">
+  <div id="header"></div>
+
+  <div class="auth-wrap">
+    <div class="auth-side">
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=70" alt="">
+      <div class="logo" style="color:#fff"><span class="mark"></span><span>Compre Fácil<b style="color:var(--accent-400)">MT</b></span></div>
+      <div>
+        <h2>Crie sua conta e comece a vender hoje mesmo.</h2>
+        <p style="color:#d6e4f6;max-width:380px">Anúncios grátis, contato direto por WhatsApp e milhares de compradores em todo o estado.</p>
+      </div>
+      <p class="quote">Mais de 10 mil anúncios já publicados em Mato Grosso.</p>
+    </div>
+
+    <div class="auth-form-side">
+      <div class="auth-card">
+        <h1>Criar conta</h1>
+        <p class="sub">Leva menos de 1 minuto. É grátis.</p>
+        <div class="social-login">
+          <button class="btn btn-outline btn-block" id="gbtn">Cadastrar com Google</button>
+        </div>
+        <div class="divider">ou</div>
+        <form id="signupForm">
+          <div class="form-field">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" placeholder="Seu nome" required>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" placeholder="voce@email.com" required>
+            </div>
+            <div class="form-field">
+              <label for="tel">WhatsApp</label>
+              <input type="tel" id="tel" placeholder="(66) 90000-0000" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="Crie uma senha" required>
+          </div>
+          <label class="check" style="margin:4px 0 8px"><input type="checkbox" required> Concordo com os termos de uso e privacidade.</label>
+          <button type="submit" class="btn btn-primary btn-block">Criar minha conta</button>
+        </form>
+        <p class="switch">Já tem conta? <a href="login.html">Entrar</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelector('.auth-side .logo .mark').innerHTML = ICONS.cart;
+      document.getElementById('gbtn').innerHTML = ICONS.google + ' Cadastrar com Google';
+      document.querySelector('#gbtn svg').style.width='18px';
+      document.getElementById('signupForm').addEventListener('submit',(e)=>{e.preventDefault();showToast('Conta criada (demonstração) ✅');setTimeout(()=>location.href='index.html',900);});
+    });
+  </script>
+</body>
+</html>

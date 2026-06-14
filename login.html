@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar — Compre Fácil MT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="login">
+  <div id="header"></div>
+
+  <div class="auth-wrap">
+    <div class="auth-side">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70" alt="">
+      <div class="logo" style="color:#fff"><span class="mark">${''}</span><span>Compre Fácil<b style="color:var(--accent-400)">MT</b></span></div>
+      <div>
+        <h2>Bem-vindo de volta ao maior marketplace de Mato Grosso.</h2>
+        <p style="color:#d6e4f6;max-width:380px">Acompanhe seus anúncios, favoritos e mensagens em um só lugar.</p>
+      </div>
+      <p class="quote">✝ "Posso todas as coisas naquele que me fortalece." — Filipenses 4:13</p>
+    </div>
+
+    <div class="auth-form-side">
+      <div class="auth-card">
+        <h1>Entrar</h1>
+        <p class="sub">Acesse sua conta para anunciar e negociar.</p>
+        <div class="social-login">
+          <button class="btn btn-outline btn-block" id="gbtn">Continuar com Google</button>
+        </div>
+        <div class="divider">ou</div>
+        <form id="loginForm">
+          <div class="form-field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" placeholder="voce@email.com" required>
+          </div>
+          <div class="form-field">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" placeholder="••••••••" required>
+          </div>
+          <p class="forgot"><a href="#">Esqueci minha senha</a></p>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px">Entrar</button>
+        </form>
+        <p class="switch">Ainda não tem conta? <a href="cadastro.html">Cadastre-se grátis</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelector('.auth-side .logo .mark').innerHTML = ICONS.cart;
+      document.getElementById('gbtn').innerHTML = ICONS.google + ' Continuar com Google';
+      document.getElementById('gbtn').style.cssText += 'gap:10px';
+      document.querySelector('#gbtn svg').style.width='18px';
+      document.getElementById('loginForm').addEventListener('submit',(e)=>{e.preventDefault();showToast('Login de demonstração ✅');setTimeout(()=>location.href='index.html',900);});
+    });
+  </script>
+</body>
+</html>

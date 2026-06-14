@@ -45,6 +45,9 @@ function renderInto(id, html) { const el = document.getElementById(id); if (el) 
 /* ---------- HOME ---------- */
 function initHome() {
   initHero();
+  const setIcon = (id, svg) => { const e = document.getElementById(id); if (e) e.innerHTML = svg; };
+  setIcon('t1', ICONS.tag); setIcon('t2', ICONS.building); setIcon('t3', ICONS.pin); setIcon('t4', ICONS.shield);
+  setIcon('w1', ICONS.check); setIcon('w2', ICONS.check); setIcon('w3', ICONS.check);
   renderInto('home-veiculos', VEICULOS.slice(0,4).map(vehicleCard).join(''));
   renderInto('home-imoveis', IMOVEIS.slice(0,3).map(propertyCard).join(''));
   renderInto('home-loja', PRODUTOS.slice(0,4).map(productCard).join(''));
@@ -179,6 +182,124 @@ function applyQueryString() {
   if (q) { const e = document.getElementById('q'); if (e) e.value = q; }
 }
 
+/* ---------- Revendas / Imobiliárias ---------- */
+function initRevendas() {
+  const grid = document.getElementById('reseller-grid');
+  if (!grid) return;
+  function render() {
+    const q = txt('q');
+    const seg = activeChip('#segChips');
+    const res = REVENDAS.filter(r =>
+      (seg==='todos' || (seg==='veiculos' && r.segment.includes('veículos')) ||
+       (seg==='imoveis' && (r.segment.includes('Imobiliária')||r.segment.includes('Corretor'))) ||
+       (seg==='loja' && r.segment.includes('eletrônicos'))) &&
+      (!q || (r.name+r.city+r.segment).toLowerCase().includes(q))
+    );
+    grid.innerHTML = res.length ? res.map(r=>`
+      <div class="reseller reveal">
+        <div class="cover" style="background:${r.cover}"><div class="r-ava" style="background:${r.color}">${r.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</div></div>
+        <div class="r-body">
+          <h3>${r.name}</h3>
+          <div class="r-tag">${r.segment} · ${r.city} — MT</div>
+          <div class="stars">${stars(r.rating)}</div>
+          <div class="r-meta"><span><b>${r.anuncios}</b> anúncios ativos</span></div>
+          <a href="${waLink('Olá! Vi a '+r.name+' na Compre Fácil MT e gostaria de mais informações.')}" target="_blank" rel="noopener" class="btn btn-dark btn-sm btn-block">Ver anúncios</a>
+        </div>
+      </div>`).join('') : `<div class="empty" style="grid-column:1/-1">${ICONS.search}<h3>Nenhuma revenda encontrada</h3></div>`;
+    const c = document.getElementById('result-count'); if (c) c.innerHTML = `<b>${res.length}</b> ${res.length===1?'parceiro':'parceiros'}`;
+    initReveal();
+  }
+  document.querySelectorAll('[data-filter]').forEach(el=>el.addEventListener('input', render));
+  document.querySelectorAll('.chip[data-type]').forEach(chip=>chip.addEventListener('click', ()=>{
+    chip.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); chip.classList.add('active'); render();
+  }));
+  render();
+}
+
+/* ---------- Busca avançada ---------- */
+function initBusca() {
+  const form = document.getElementById('advForm');
+  if (!form) return;
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const cat = val('aCategoria');
+    const q = txt('aTermo');
+    const dest = { veiculos:'veiculos.html', imoveis:'imoveis.html', loja:'loja.html' }[cat] || 'veiculos.html';
+    location.href = q ? `${dest}?q=${encodeURIComponent(q)}` : dest;
+  });
+}
+
+/* ---------- Página de detalhe ---------- */
+function initDetalhe() {
+  const root = document.getElementById('detail-root');
+  if (!root) return;
+  const id = new URLSearchParams(location.search).get('id');
+  const item = ALL.find(x=>x.id===id) || ALL[0];
+  const isV = item.cat==='veiculos', isI = item.cat==='imoveis';
+  const catLabel = isV?'Veículo':isI?'Imóvel':'Produto';
+  const old = item.oldPrice ? `<small>${formatBRL(item.oldPrice)}</small>` : '';
+
+  let specs = '';
+  if (isV) specs = `
+    <div class="spec"><span>Ano</span><b>${item.year}</b></div>
+    <div class="spec"><span>KM</span><b>${item.km.toLocaleString('pt-BR')}</b></div>
+    <div class="spec"><span>Câmbio</span><b>${item.gear}</b></div>
+    <div class="spec"><span>Combustível</span><b>${item.fuel}</b></div>
+    <div class="spec"><span>Marca</span><b>${item.brand}</b></div>
+    <div class="spec"><span>Tipo</span><b>${item.type}</b></div>`;
+  else if (isI) specs = `
+    <div class="spec"><span>Tipo</span><b>${item.type}</b></div>
+    <div class="spec"><span>Negócio</span><b>${item.deal}</b></div>
+    <div class="spec"><span>Quartos</span><b>${item.beds||'—'}</b></div>
+    <div class="spec"><span>Banheiros</span><b>${item.baths}</b></div>
+    <div class="spec"><span>Vagas</span><b>${item.garage}</b></div>
+    <div class="spec"><span>Área</span><b>${item.area} m²</b></div>`;
+  else specs = `
+    <div class="spec"><span>Categoria</span><b>${item.group}</b></div>
+    <div class="spec"><span>Vendedor</span><b>${item.seller}</b></div>
+    <div class="spec"><span>Cidade</span><b>${item.city}</b></div>
+    <div class="spec"><span>Condição</span><b>Disponível</b></div>`;
+
+  const seller = isV ? item.dealer : (item.seller || 'Anunciante particular');
+  const cta = item.cat==='loja'
+    ? `<button class="btn btn-primary btn-block" onclick="addToCart('${item.id}')">${ICONS.cart} Adicionar ao carrinho</button>
+       <a href="${waLink('Olá! Tenho interesse no produto: '+item.title+' ('+formatBRL(item.price)+').')}" target="_blank" rel="noopener" class="btn btn-wa btn-block" style="margin-top:10px">${ICONS.wa} Comprar / Negociar</a>`
+    : `<a href="${waLink('Olá! Tenho interesse no '+item.title+' ('+formatBRL(item.price)+'). Ainda está disponível?')}" target="_blank" rel="noopener" class="btn btn-wa btn-block">${ICONS.wa} ${isI?'Agendar visita':'Tenho interesse'}</a>`;
+
+  const desc = `Anúncio de demonstração apresentado com o novo layout da Compre Fácil MT. ${item.title} localizado em ${item.city} — MT. Entre em contato pelo WhatsApp para mais fotos, condições de pagamento e agendamento. Negociação direta com o anunciante, sem burocracia.`;
+
+  document.title = `${item.title} — Compre Fácil MT`;
+  root.innerHTML = `
+    <div class="breadcrumb"><a href="index.html">Início</a> / <a href="${isV?'veiculos.html':isI?'imoveis.html':'loja.html'}">${catLabel}s</a> / ${item.title}</div>
+    <div class="detail">
+      <div>
+        <div class="detail-gallery">
+          <div class="main-img"><img id="mainImg" src="${item.img}" alt="${item.title}" onerror="this.onerror=null;this.src='${item.fb}'"></div>
+          <div class="detail-thumbs">
+            ${[item.img, item.fb, item.img, item.fb].map((src,i)=>`<img src="${src}" class="${i===0?'active':''}" onerror="this.onerror=null;this.src='${item.fb}'" onclick="document.getElementById('mainImg').src=this.src;document.querySelectorAll('.detail-thumbs img').forEach(t=>t.classList.remove('active'));this.classList.add('active')">`).join('')}
+          </div>
+        </div>
+        <div class="detail-desc">
+          <h3>Descrição</h3>
+          <p>${desc}</p>
+          <div class="seller-box">
+            <div class="s-ava">${seller.split(' ').map(w=>w[0]).slice(0,2).join('')}</div>
+            <div><b>${seller}</b><div class="muted" style="font-size:13px">Anunciante · ${item.city} — MT</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-side">
+        <span class="d-cat">${isV?item.brand+' · '+item.type : isI?item.deal+' · '+item.type : item.group}</span>
+        <h1>${item.title}</h1>
+        <span class="loc muted">${item.city} — MT</span>
+        <div class="d-price">${formatBRL(item.price)}${item.cat==='imoveis'&&item.deal==='Aluguel'?'<small style="text-decoration:none">/mês</small>':''} ${old}</div>
+        <div class="spec-grid">${specs}</div>
+        ${cta}
+      </div>
+    </div>`;
+  initReveal();
+}
+
 /* ---------- Roteador por página ---------- */
 function initPage() {
   const page = document.body.dataset.page;
@@ -188,4 +309,7 @@ function initPage() {
   if (page==='imoveis') initImoveis();
   if (page==='loja') initLoja();
   if (page==='anunciar') initAnunciar();
+  if (page==='revendas') initRevendas();
+  if (page==='busca') initBusca();
+  if (page==='detalhe') initDetalhe();
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revendas, Imobiliárias e Corretores — Compre Fácil MT</title>
+  <meta name="description" content="Revendas de veículos, imobiliárias e corretores parceiros e verificados em Mato Grosso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="revendas">
+  <div id="header"></div>
+
+  <div class="page-head">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Início</a> / Revendas</div>
+      <h1>Revendas, imobiliárias e corretores</h1>
+      <p>Empresas e profissionais verificados que vendem todos os dias na Compre Fácil MT.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="results-top">
+        <div class="chips" id="segChips" style="margin-bottom:0">
+          <button class="chip active" data-type="todos">Todos</button>
+          <button class="chip" data-type="veiculos">Veículos</button>
+          <button class="chip" data-type="imoveis">Imóveis</button>
+          <button class="chip" data-type="loja">Lojas</button>
+        </div>
+        <div style="position:relative;min-width:260px">
+          <input type="text" id="q" data-filter placeholder="Buscar revenda ou cidade..." style="width:100%;padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:var(--font);font-size:14px;outline:none">
+        </div>
+      </div>
+      <p class="count muted" id="result-count" style="margin:0 0 20px"></p>
+      <div class="reseller-grid" id="reseller-grid"></div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

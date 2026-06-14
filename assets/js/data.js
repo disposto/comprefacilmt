@@ -51,6 +51,19 @@ const DEALERS = [
   { name:'TechMT', type:'Eletrônicos', city:'Cuiabá', rating:5, color:'#0891b2' },
 ];
 
+/* Revendas e imobiliárias parceiras (página Revendas) */
+const REVENDAS = [
+  { name:'Speed Car', segment:'Revenda de veículos', city:'Cuiabá', anuncios:48, rating:5, color:'#1657a0', cover:'#103e72' },
+  { name:'Aliança Veículos', segment:'Revenda de veículos', city:'Rondonópolis', anuncios:62, rating:5, color:'#e8730a', cover:'#0a2540' },
+  { name:'Borges Veículos', segment:'Revenda de veículos', city:'Várzea Grande', anuncios:35, rating:4, color:'#16a34a', cover:'#0d2f54' },
+  { name:'Pokone Multimarcas', segment:'Revenda de veículos', city:'Sinop', anuncios:51, rating:5, color:'#7c3aed', cover:'#103e72' },
+  { name:'Imóveis Cuiabá', segment:'Imobiliária', city:'Cuiabá', anuncios:120, rating:5, color:'#0891b2', cover:'#0a2540' },
+  { name:'Pantanal Imóveis', segment:'Imobiliária', city:'Várzea Grande', anuncios:88, rating:4, color:'#be123c', cover:'#0d2f54' },
+  { name:'MT Corretagem', segment:'Corretor autônomo', city:'Rondonópolis', anuncios:27, rating:5, color:'#15803d', cover:'#103e72' },
+  { name:'Lar & Cia Imóveis', segment:'Imobiliária', city:'Sorriso', anuncios:43, rating:4, color:'#7c2d12', cover:'#0a2540' },
+  { name:'TechMT Store', segment:'Loja de eletrônicos', city:'Cuiabá', anuncios:64, rating:5, color:'#4338ca', cover:'#0d2f54' },
+];
+
 /* Imagens largas para o hero full-screen (1 por vertical do negócio) */
 const HERO_SLIDES = [
   'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2100&q=80',   /* veículos */

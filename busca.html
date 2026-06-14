@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Busca Avançada — Compre Fácil MT</title>
+  <meta name="description" content="Busca avançada de veículos, imóveis e produtos em Mato Grosso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="busca">
+  <div id="header"></div>
+
+  <div class="page-head">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Início</a> / Busca Avançada</div>
+      <h1>Busca avançada</h1>
+      <p>Filtre por categoria, localização e faixa de preço e encontre exatamente o que procura.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <form class="adv-search" id="advForm">
+        <div class="adv-grid">
+          <div class="form-field">
+            <label for="aCategoria">Categoria</label>
+            <select id="aCategoria">
+              <option value="veiculos">Veículos</option>
+              <option value="imoveis">Imóveis</option>
+              <option value="loja">Loja Virtual</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="aTermo">Palavra-chave</label>
+            <input type="text" id="aTermo" placeholder="Ex.: SUV, apartamento, iPhone...">
+          </div>
+          <div class="form-field">
+            <label for="aCidade">Cidade</label>
+            <select id="aCidade">
+              <option value="">Todo o estado</option>
+              <option>Cuiabá</option><option>Várzea Grande</option><option>Rondonópolis</option>
+              <option>Sinop</option><option>Sorriso</option><option>Tangará da Serra</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="aMin">Preço mínimo (R$)</label>
+            <input type="number" id="aMin" placeholder="0">
+          </div>
+          <div class="form-field">
+            <label for="aMax">Preço máximo (R$)</label>
+            <input type="number" id="aMax" placeholder="Sem limite">
+          </div>
+          <div class="form-field">
+            <label for="aOrd">Ordenar por</label>
+            <select id="aOrd">
+              <option>Relevância</option><option>Menor preço</option><option>Maior preço</option><option>Mais recentes</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:22px">Buscar anúncios</button>
+      </form>
+
+      <div style="margin-top:36px">
+        <div class="section-head"><div><span class="eyebrow">Sugestões</span><h2 style="font-size:26px">Buscas populares em MT</h2></div></div>
+        <div class="chips">
+          <a href="veiculos.html?q=SUV" class="chip">SUVs em Cuiabá</a>
+          <a href="veiculos.html?q=Picape" class="chip">Picapes 4x4</a>
+          <a href="imoveis.html?q=Apartamento" class="chip">Apartamentos para alugar</a>
+          <a href="imoveis.html?q=Casa" class="chip">Casas em condomínio</a>
+          <a href="loja.html?q=iPhone" class="chip">iPhones seminovos</a>
+          <a href="loja.html?q=Notebook" class="chip">Notebooks</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
