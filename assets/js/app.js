@@ -63,8 +63,9 @@ function initHome() {
 /* ---------- Listagens (filtros + busca + ordenação) ---------- */
 function priceSort(arr, mode) {
   const a = [...arr];
-  if (mode==='menor') a.sort((x,y)=>x.price-y.price);
-  else if (mode==='maior') a.sort((x,y)=>y.price-x.price);
+  const v = p => (p.price==null ? (mode==='maior'? -Infinity : Infinity) : p.price); // "Sob consulta" sempre no fim
+  if (mode==='menor') a.sort((x,y)=>v(x)-v(y));
+  else if (mode==='maior') a.sort((x,y)=>v(y)-v(x));
   return a;
 }
 
@@ -237,7 +238,8 @@ function initDetalhe() {
   const item = ALL.find(x=>x.id===id) || ALL[0];
   const isV = item.cat==='veiculos', isI = item.cat==='imoveis';
   const catLabel = isV?'Veículo':isI?'Imóvel':'Produto';
-  const old = item.oldPrice ? `<small>${formatBRL(item.oldPrice)}</small>` : '';
+  const old = (item.price!=null && item.oldPrice) ? `<small>${formatBRL(item.oldPrice)}</small>` : '';
+  const priceLabel = item.price!=null ? formatBRL(item.price) : 'Sob consulta';
 
   let specs = '';
   if (isV) specs = `
@@ -261,10 +263,15 @@ function initDetalhe() {
     <div class="spec"><span>Condição</span><b>Disponível</b></div>`;
 
   const seller = isV ? item.dealer : (item.seller || 'Anunciante particular');
-  const cta = item.cat==='loja'
-    ? `<button class="btn btn-primary btn-block" onclick="addToCart('${item.id}')">${ICONS.cart} Adicionar ao carrinho</button>
-       <a href="${waLink('Olá! Tenho interesse no produto: '+item.title+' ('+formatBRL(item.price)+').')}" target="_blank" rel="noopener" class="btn btn-wa btn-block" style="margin-top:10px">${ICONS.wa} Comprar / Negociar</a>`
-    : `<a href="${waLink('Olá! Tenho interesse no '+item.title+' ('+formatBRL(item.price)+'). Ainda está disponível?')}" target="_blank" rel="noopener" class="btn btn-wa btn-block">${ICONS.wa} ${isI?'Agendar visita':'Tenho interesse'}</a>`;
+  const priceMsg = item.price!=null ? ' ('+formatBRL(item.price)+')' : '';
+  let cta;
+  if (item.cat==='loja' && item.price!=null)
+    cta = `<button class="btn btn-primary btn-block" onclick="addToCart('${item.id}')">${ICONS.cart} Adicionar ao carrinho</button>
+       <a href="${waLink('Olá! Tenho interesse no produto: '+item.title+priceMsg+'.')}" target="_blank" rel="noopener" class="btn btn-wa btn-block" style="margin-top:10px">${ICONS.wa} Comprar / Negociar</a>`;
+  else if (item.cat==='loja')
+    cta = `<a href="${waLink('Olá! Tenho interesse no produto: '+item.title+'. Qual o valor e a forma de pagamento?')}" target="_blank" rel="noopener" class="btn btn-wa btn-block">${ICONS.wa} Consultar valor</a>`;
+  else
+    cta = `<a href="${waLink('Olá! Tenho interesse no '+item.title+priceMsg+'. Ainda está disponível?')}" target="_blank" rel="noopener" class="btn btn-wa btn-block">${ICONS.wa} ${isI?'Agendar visita':'Tenho interesse'}</a>`;
 
   const desc = `Anúncio de demonstração apresentado com o novo layout da Compre Fácil MT. ${item.title} localizado em ${item.city} — MT. Entre em contato pelo WhatsApp para mais fotos, condições de pagamento e agendamento. Negociação direta com o anunciante, sem burocracia.`;
 
@@ -292,7 +299,7 @@ function initDetalhe() {
         <span class="d-cat">${isV?item.brand+' · '+item.type : isI?item.deal+' · '+item.type : item.group}</span>
         <h1>${item.title}</h1>
         <span class="loc muted">${item.city} — MT</span>
-        <div class="d-price">${formatBRL(item.price)}${item.cat==='imoveis'&&item.deal==='Aluguel'?'<small style="text-decoration:none">/mês</small>':''} ${old}</div>
+        <div class="d-price">${priceLabel}${item.cat==='imoveis'&&item.deal==='Aluguel'?'<small style="text-decoration:none">/mês</small>':''} ${old}</div>
         <div class="spec-grid">${specs}</div>
         ${cta}
       </div>

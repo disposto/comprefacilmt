@@ -232,9 +232,13 @@ function propertyCard(p) {
 }
 
 function productCard(p) {
-  const old = p.oldPrice ? `<small>${formatBRL(p.oldPrice)}</small>` : '';
+  const old = (p.price!=null && p.oldPrice) ? `<small>${formatBRL(p.oldPrice)}</small>` : '';
   const badge = p.badge ? `<span class="badge ${p.badge==='Oferta'?'green':''}">${p.badge}</span>` : '';
   const href = `detalhe.html?id=${p.id}`;
+  const priceHtml = p.price!=null ? `<div class="price">${formatBRL(p.price)}</div>${old}` : `<div class="price price-sm">Sob consulta</div>`;
+  const cta = p.price!=null
+    ? `<button class="btn btn-primary btn-sm btn-block card-cta" onclick="addToCart('${p.id}')">${ICONS.cart} Adicionar</button>`
+    : `<a href="${waLink('Olá! Tenho interesse no produto: '+p.title+'. Qual o valor?')}" target="_blank" rel="noopener" class="btn btn-primary btn-sm btn-block card-cta">${ICONS.wa} Consultar valor</a>`;
   return `<article class="card reveal">
     <div class="thumb">
       <a href="${href}"><img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.onerror=null;this.src='${p.fb}'"></a>
@@ -245,10 +249,8 @@ function productCard(p) {
       <span class="cat-tag">${p.group}</span>
       <h3 class="title"><a href="${href}">${p.title}</a></h3>
       <div class="meta"><span>${ICONS.pin} ${p.city}</span><span>por ${p.seller}</span></div>
-      <div class="price-row">
-        <div><div class="price">${formatBRL(p.price)}</div>${old}</div>
-      </div>
-      <button class="btn btn-primary btn-sm btn-block card-cta" onclick="addToCart('${p.id}')">${ICONS.cart} Adicionar</button>
+      <div class="price-row"><div>${priceHtml}</div></div>
+      ${cta}
     </div>
   </article>`;
 }

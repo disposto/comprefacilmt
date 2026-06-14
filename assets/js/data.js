@@ -6,7 +6,7 @@
 
 const IMG = 'assets/img';
 
-const FALLBACK = { carro: `${IMG}/v1.jpg`, imovel: `${IMG}/i1.jpg`, produto: `${IMG}/guitar.jpg` };
+const FALLBACK = { carro: `${IMG}/v1.jpg`, imovel: `${IMG}/i1.jpg`, produto: `${IMG}/p_iphone15.jpg` };
 
 const VEICULOS = [
   { id:'v1', title:'VW T-Cross Highline', cat:'veiculos', type:'Carro', brand:'Volkswagen', year:2021, km:48000, fuel:'Flex', gear:'Automático', price:129900, oldPrice:138000, city:'Cuiabá', dealer:'Borges Veículos', img:`${IMG}/v2.jpg`, fb:FALLBACK.carro, badge:'Destaque' },
@@ -28,16 +28,17 @@ const IMOVEIS = [
   { id:'i6', title:'Casa térrea 2 quartos', cat:'imoveis', type:'Casa', deal:'Aluguel', beds:2, baths:1, garage:2, area:110, price:1400, city:'Rondonópolis', img:`${IMG}/i6.jpg`, fb:FALLBACK.imovel, badge:'Oferta' },
 ];
 
+/* Produtos REAIS da Loja Virtual do anunciante (comprefacilmt.com.br)
+   price = null quando o valor é "Sob consulta" no site dele */
 const PRODUTOS = [
-  { id:'p1', title:'Violão Takamine Acústico/Elétrico', cat:'loja', group:'Instrumentos', price:2000, oldPrice:2600, city:'Cuiabá', seller:'Loja do Anunciante', img:`${IMG}/guitar.jpg`, fb:FALLBACK.produto, badge:'Imperdível', featured:true },
-  { id:'p2', title:'iPhone 15 — Seminovo', cat:'loja', group:'Eletrônicos', price:4299, oldPrice:4999, city:'Cuiabá', seller:'TechMT', img:`${IMG}/p_iphone15.jpg`, fb:FALLBACK.produto, badge:'Oferta' },
-  { id:'p3', title:'iPhone 12 — Ótimo estado', cat:'loja', group:'Eletrônicos', price:2399, city:'Várzea Grande', seller:'TechMT', img:`${IMG}/p_iphone12.jpg`, fb:FALLBACK.produto },
-  { id:'p4', title:'Smart TV 50" 4K', cat:'loja', group:'Eletrônicos', price:2299, city:'Cuiabá', seller:'TechMT', img:`${IMG}/tv.jpg`, fb:FALLBACK.produto },
-  { id:'p5', title:'Notebook 16GB SSD 512GB', cat:'loja', group:'Eletrônicos', price:3499, oldPrice:3999, city:'Cuiabá', seller:'TechMT', img:`${IMG}/notebook.jpg`, fb:FALLBACK.produto, badge:'Oferta' },
-  { id:'p6', title:'Furadeira de Impacto 750W', cat:'loja', group:'Ferramentas', price:289.90, city:'Cuiabá', seller:'Casa & Obra', img:`${IMG}/drill.jpg`, fb:FALLBACK.produto },
-  { id:'p7', title:'Conjunto de Panelas Antiaderente', cat:'loja', group:'Casa', price:259.90, city:'Rondonópolis', seller:'Casa & Obra', img:`${IMG}/pans.jpg`, fb:FALLBACK.produto },
-  { id:'p8', title:'Fone Bluetooth com Cancelamento', cat:'loja', group:'Eletrônicos', price:349, city:'Cuiabá', seller:'TechMT', img:`${IMG}/headphone.jpg`, fb:FALLBACK.produto },
-  { id:'p9', title:'Bicicleta Aro 29 21v', cat:'loja', group:'Esporte', price:1290, oldPrice:1590, city:'Sinop', seller:'Bike Center', img:`${IMG}/bike.jpg`, fb:FALLBACK.produto, badge:'Oferta' },
+  { id:'p1', title:'Apple iPhone 15 Pro 128GB Titânio — Pronta entrega', cat:'loja', group:'Eletrônicos', price:4089, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/p_iphone15.jpg`, fb:FALLBACK.produto, badge:'Pronta entrega', featured:true },
+  { id:'p2', title:'iPhone 12 Dual SIM 64GB Preto — Recondicionado', cat:'loja', group:'Eletrônicos', price:1749, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/p_iphone12.jpg`, fb:FALLBACK.produto, badge:'Oferta' },
+  { id:'p3', title:'iPhone 17 Pro 256GB Azul-profundo — Loja Oficial Apple', cat:'loja', group:'Eletrônicos', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/iphone17.jpg`, fb:FALLBACK.produto, badge:'Lacrado' },
+  { id:'p4', title:'TG-15mg — 4 Ampolas Tirzepatida Original', cat:'loja', group:'Saúde', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/tg.webp`, fb:FALLBACK.produto, badge:'Original' },
+  { id:'p5', title:'Tirzepatida Lipoless — 15mg', cat:'loja', group:'Saúde', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/tirzepatida.webp`, fb:FALLBACK.produto },
+  { id:'p6', title:'Retatrutida Diamond Veltrane — 120mg / 6ml', cat:'loja', group:'Saúde', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/retatrutida.png`, fb:FALLBACK.produto },
+  { id:'p7', title:'Kit 4 Potes Acrílico 3,8L Organizador de Geladeira', cat:'loja', group:'Casa', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/potes.jpg`, fb:FALLBACK.produto },
+  { id:'p8', title:'Soprador de Folhas Turbo 46V com 2 Baterias', cat:'loja', group:'Ferramentas', price:null, city:'Cuiabá', seller:'Compre Fácil MT', img:`${IMG}/soprador.png`, fb:FALLBACK.produto, badge:'Sem fio' },
 ];
 
 const DEALERS = [
