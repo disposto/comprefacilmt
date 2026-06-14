@@ -81,9 +81,8 @@ function renderHeader() {
   </div>
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="logo">
-        <span class="mark">${ICONS.cart}</span>
-        <span>Compre Fácil<b>MT</b><small>O marketplace de Mato Grosso</small></span>
+      <a href="index.html" class="logo logo-img" aria-label="Compre Fácil MT">
+        <img src="assets/img/logo-clean.png" alt="Compre Fácil MT">
       </a>
       <nav class="main-nav">${navItems}</nav>
       <div class="header-actions">
@@ -96,8 +95,8 @@ function renderHeader() {
   </header>
   <div class="mobile-nav" id="mobileNav" onclick="if(event.target.id==='mobileNav')toggleMobileNav(false)">
     <div class="panel">
-      <a href="index.html" class="logo" style="margin-bottom:14px">
-        <span class="mark">${ICONS.cart}</span><span>Compre Fácil<b>MT</b></span>
+      <a href="index.html" class="logo logo-img" style="margin-bottom:14px">
+        <img src="assets/img/logo-clean.png" alt="Compre Fácil MT">
       </a>
       ${mobItems}
       <a href="login.html" class="btn btn-ghost btn-block">Entrar / Cadastrar</a>
@@ -118,8 +117,8 @@ function renderFooter() {
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="logo"><span class="mark">${ICONS.cart}</span><span>Compre Fácil<b>MT</b><small>O marketplace de Mato Grosso</small></span></div>
-          <p class="desc">Encontre ou venda seu veículo, imóvel ou produto em poucos cliques. O maior portal de classificados de Mato Grosso, feito com confiança e fé.</p>
+          <span class="logo-badge"><img src="assets/img/logo-clean.png" alt="Compre Fácil MT"></span>
+          <p class="desc" style="margin-top:18px">Encontre ou venda seu veículo, imóvel ou produto em poucos cliques. O maior portal de classificados de Mato Grosso, feito com confiança e fé.</p>
           <div class="social">
             <a href="${CONTATO.instagram}" aria-label="Instagram">${ICONS.ig}</a>
             <a href="${CONTATO.facebook}" aria-label="Facebook">${ICONS.fb}</a>
@@ -131,10 +130,10 @@ function renderFooter() {
           <h4>Categorias</h4>
           <ul>
             <li><a href="veiculos.html">Carros</a></li>
-            <li><a href="veiculos.html">Motos</a></li>
-            <li><a href="veiculos.html">Caminhões</a></li>
+            <li><a href="veiculos.html">Picapes & Caminhões</a></li>
             <li><a href="imoveis.html">Imóveis</a></li>
             <li><a href="loja.html">Loja Virtual</a></li>
+            <li><a href="busca.html">Busca avançada</a></li>
           </ul>
         </div>
         <div>
