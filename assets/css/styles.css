@@ -134,7 +134,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; margin: 0;
 
 /* ====================== Hero carrossel full-screen ====================== */
 .hero {
-  position: relative; height: 100vh; min-height: 560px; max-height: 920px; overflow: hidden;
+  position: relative; height: 64vh; min-height: 440px; max-height: 760px; overflow: hidden;
   background: var(--brand-900);
 }
 .hero-slides { position: absolute; inset: 0; }
@@ -166,10 +166,14 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; margin: 0;
 .hero-dot.active { background: #fff; }
 
 .hero-scroll {
-  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); z-index: 5;
-  color: rgba(255,255,255,.85); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 5;
+  color: #fff; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
   display: flex; flex-direction: column; align-items: center; gap: 8px;
+  background: none; border: none; cursor: pointer; font-family: var(--font);
+  text-shadow: 0 1px 8px rgba(0,0,0,.5); transition: transform .2s; animation: bob 2s ease-in-out infinite;
 }
+.hero-scroll:hover { transform: translateX(-50%) translateY(3px); }
+@keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 .hero-scroll .mouse { width: 22px; height: 34px; border: 1.5px solid rgba(255,255,255,.7); border-radius: 12px; position: relative; }
 .hero-scroll .mouse::after { content: ''; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); width: 3px; height: 7px; border-radius: 2px; background: #fff; animation: scrolldot 1.6s infinite; }
 @keyframes scrolldot { 0% { opacity: 0; transform: translate(-50%, 0); } 40% { opacity: 1; } 80% { opacity: 0; transform: translate(-50%, 10px); } }
@@ -193,7 +197,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; margin: 0;
 @media (prefers-reduced-motion: reduce) {
   .hero-slide { transition: opacity .4s ease; }
   .hero-slide.active .hero-slide-img { animation: none; }
-  .hero-scroll .mouse::after { animation: none; }
+  .hero-scroll, .hero-scroll .mouse::after { animation: none; }
 }
 
 /* ====================== Sections ====================== */
